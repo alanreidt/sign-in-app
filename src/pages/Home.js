@@ -1,3 +1,5 @@
+import Box from '../components/Box';
+
 function Home() {
   const sx = {
     display: 'flex',
@@ -6,7 +8,13 @@ function Home() {
     minHeight: '100vh',
   };
 
-  return <div style={sx}>Home is loaded</div>;
+  return (
+    <div style={sx}>
+      <Box>
+        Home is loaded
+      </Box>
+    </div>
+  );
 }
 
 export default Home;
