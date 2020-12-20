@@ -1,4 +1,5 @@
 import Box from '../components/Box';
+import Input from '../components/Input';
 
 function Home() {
   const sx = {
@@ -11,7 +12,25 @@ function Home() {
   return (
     <div style={sx}>
       <Box>
-        Home is loaded
+        <form>
+          <Input
+            labelText={'Email:'}
+            type="email"
+            name="email"
+            placeholder="georgerowlett@example.com"
+            spellCheck="false"
+            autoComplete="email"
+            required={true}
+          />
+          <Input
+            labelText={'Password:'}
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            autoComplete="current-password"
+            required={true}
+          />
+        </form>
       </Box>
     </div>
   );
