@@ -1,10 +1,11 @@
 function Input(props) {
   const {
     labelText,
+    id,
     ...restProps
   } = props;
 
-  const labelTextStyle = {
+  const labelStyle = {
     display: 'block',
     marginBottom: '5px',
 
@@ -12,6 +13,8 @@ function Input(props) {
   };
 
   const inputStyle = {
+    display: 'block',
+    width: '100%',
     padding: '15px',
 
     fontFamily: 'inherit',
@@ -20,14 +23,20 @@ function Input(props) {
     color: 'inherit',
     border: '1px solid rgba(0, 0, 0, .25)',
     borderRadius: '3px',
+
+    boxSizing: 'border-box',
   };
 
   return (
     <div>
-      <label>
-        <span style={labelTextStyle}>{labelText}</span>
-        <input style={inputStyle} {...restProps} />
+      <label style={labelStyle} for={id}>
+        {labelText}
       </label>
+      <input
+        style={inputStyle}
+        id={id}
+        {...restProps}
+      />
     </div>
   );
 }

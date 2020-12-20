@@ -16,6 +16,7 @@ function Home() {
           <Input
             labelText={'Email:'}
             type="email"
+            id="email"
             name="email"
             placeholder="georgerowlett@example.com"
             spellCheck="false"
@@ -25,6 +26,7 @@ function Home() {
           <Input
             labelText={'Password:'}
             type="password"
+            id="password"
             name="password"
             placeholder="Enter your password"
             autoComplete="current-password"
