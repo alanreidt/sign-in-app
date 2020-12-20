@@ -11,7 +11,7 @@ function Home() {
 
   return (
     <div style={sx}>
-      <Box>
+      <Box maxWidth={450}>
         <form>
           <Input
             labelText={'Email:'}
