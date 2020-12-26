@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import Page from '../components/Page';
+
 const SuccessMessage = styled.p`
   font-size: 30px;
   color: green;
@@ -7,9 +9,9 @@ const SuccessMessage = styled.p`
 
 function SuccessPage() {
   return (
-    <div>
+    <Page>
       <SuccessMessage>Success</SuccessMessage>
-    </div>
+    </Page>
   );
 }
 

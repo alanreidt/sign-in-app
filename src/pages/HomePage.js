@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
+import Page from '../components/Page';
 import Box from '../components/Box';
 import Input from '../components/Input';
 import Button from '../components/Button';
@@ -24,13 +25,6 @@ function HomePage() {
   const [password, setPassword] = useState('');
   const [areCredentialsWrong, setAreCredentialsWrong] = useState(false);
 
-  const sx = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: '100vh',
-  };
-
   const createInputHandler = (setStateAction) => (event) => {
     const value = event.currentTarget.value;
 
@@ -50,7 +44,7 @@ function HomePage() {
   };
 
   return (
-    <div style={sx}>
+    <Page>
       <Box maxWidth={450}>
         <form onSubmit={handleFormSubmit}>
           <Input
@@ -85,7 +79,7 @@ function HomePage() {
           <Button>Sign in</Button>
         </form>
       </Box>
-    </div>
+    </Page>
   );
 }
 
