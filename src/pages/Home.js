@@ -19,7 +19,7 @@ const Error = styled.p`
   color: red;
 `;
 
-function Home() {
+function HomePage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [areCredentialsWrong, setAreCredentialsWrong] = useState(false);
@@ -89,4 +89,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

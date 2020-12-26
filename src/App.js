@@ -3,14 +3,14 @@ import {
   Route
 } from "react-router-dom";
 
-import Home from './pages/Home';
+import HomePage from './pages/Home';
 
 function App() {
   return (
     <div className="App">
       <Switch>
         <Route path="/">
-          <Home/>
+          <HomePage/>
         </Route>
       </Switch>
     </div>
