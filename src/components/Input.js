@@ -29,7 +29,7 @@ function Input(props) {
 
   return (
     <div>
-      <label style={labelStyle} for={id}>
+      <label style={labelStyle} htmlFor={id}>
         {labelText}
       </label>
       <input
