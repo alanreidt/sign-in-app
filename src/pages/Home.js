@@ -1,5 +1,6 @@
 import Box from '../components/Box';
 import Input from '../components/Input';
+import Button from '../components/Button';
 
 function Home() {
   const sx = {
@@ -32,6 +33,7 @@ function Home() {
             autoComplete="current-password"
             required={true}
           />
+          <Button>Sign in</Button>
         </form>
       </Box>
     </div>
