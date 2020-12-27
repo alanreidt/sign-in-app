@@ -15,6 +15,12 @@ const checkCredentialsRightness = (credentials) => Object.entries(RIGHT_CREDENTI
   ([key, value]) => value === credentials[key]
 );
 
+const Spacing = styled.div`
+  & > *:not(:last-child) {
+    margin-bottom: ${(props) => props.vertical || '10px'};
+  }
+`;
+
 const Error = styled.p`
   display: ${(props) => props.show ? 'block' : 'none'};
   color: red;
@@ -47,36 +53,38 @@ function HomePage() {
     <Page>
       <Box maxWidth={450}>
         <form onSubmit={handleFormSubmit}>
-          <Input
-            onChange={handleEmailChange}
-            labelText="Email:"
-            type="email"
-            value={email}
-            id="email"
-            name="email"
-            placeholder="georgerowlett@example.com"
-            spellCheck="false"
-            autoComplete="email"
-            required={true}
-          />
+          <Spacing vertical="15px">
+            <Input
+              onChange={handleEmailChange}
+              labelText="Email:"
+              type="email"
+              value={email}
+              id="email"
+              name="email"
+              placeholder="georgerowlett@example.com"
+              spellCheck="false"
+              autoComplete="email"
+              required={true}
+            />
 
-          <Input
-            onChange={handlePasswordChange}
-            labelText="Password:"
-            type="password"
-            value={password}
-            id="password"
-            name="password"
-            placeholder="Enter your password"
-            autoComplete="current-password"
-            required={true}
-          />
+            <Input
+              onChange={handlePasswordChange}
+              labelText="Password:"
+              type="password"
+              value={password}
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              autoComplete="current-password"
+              required={true}
+            />
 
-          <Error show={areCredentialsWrong}>
-            Wrong email or password
-          </Error>
+            <Error show={areCredentialsWrong}>
+              Wrong email or password
+            </Error>
 
-          <Button>Sign in</Button>
+            <Button>Sign in</Button>
+          </Spacing>
         </form>
       </Box>
     </Page>
