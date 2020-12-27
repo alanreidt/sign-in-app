@@ -22,11 +22,12 @@ const StyledMessage = styled.p`
 
 function Message(props) {
   const {
+    type,
     children,
   } = props;
 
   return (
-    <StyledMessage>{children}</StyledMessage>
+    <StyledMessage type={type}>{children}</StyledMessage>
   );
 }
 
