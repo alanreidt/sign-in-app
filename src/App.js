@@ -5,6 +5,7 @@ import {
 
 import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage';
+import SignInAccountsPage from './pages/SignInAccountsPage';
 import PasswordRecoveryPage from './pages/PasswordRecoveryPage';
 import SuccessPage from './pages/SuccessPage';
 
@@ -14,6 +15,9 @@ function App() {
       <Switch>
         <Route path="/sign-up">
           <SignUpPage/>
+        </Route>
+        <Route path="/sign-in-accounts">
+          <SignInAccountsPage/>
         </Route>
         <Route path="/password-recovery">
           <PasswordRecoveryPage/>
