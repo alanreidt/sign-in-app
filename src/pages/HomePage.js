@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Page from '../components/Page';
 import Box from '../components/Box';
 import Input from '../components/Input';
+import PasswordInput from '../components/PasswordInput';
 import Button from '../components/Button';
 
 const RIGHT_CREDENTIALS = {
@@ -75,15 +76,9 @@ function HomePage() {
               required={true}
             />
 
-            <Input
+            <PasswordInput
               onChange={handlePasswordChange}
-              labelText="Password:"
-              type="password"
               value={password}
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              autoComplete="current-password"
               required={true}
             />
 
