@@ -2,7 +2,7 @@ import MessagePage from '../components/MessagePage';
 
 function SuccessPage() {
   return (
-    <MessagePage type={'success'} text={'Success'} />
+    <MessagePage type="success" text="Success" />
   );
 }
 

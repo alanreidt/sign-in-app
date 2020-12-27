@@ -49,7 +49,7 @@ function HomePage() {
         <form onSubmit={handleFormSubmit}>
           <Input
             onChange={handleEmailChange}
-            labelText={'Email:'}
+            labelText="Email:"
             type="email"
             value={email}
             id="email"
@@ -62,7 +62,7 @@ function HomePage() {
 
           <Input
             onChange={handlePasswordChange}
-            labelText={'Password:'}
+            labelText="Password:"
             type="password"
             value={password}
             id="password"
@@ -73,7 +73,7 @@ function HomePage() {
           />
 
           <Error show={areCredentialsWrong}>
-            {'Wrong email or password'}
+            Wrong email or password
           </Error>
 
           <Button>Sign in</Button>

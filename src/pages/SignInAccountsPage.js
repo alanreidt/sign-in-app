@@ -2,7 +2,7 @@ import MessagePage from '../components/MessagePage';
 
 function SignInAccountsPage() {
   return (
-    <MessagePage text={'Sign in accounts page mockup'} />
+    <MessagePage text="Sign in accounts page mockup" />
   );
 }
 

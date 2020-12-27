@@ -2,7 +2,7 @@ import MessagePage from '../components/MessagePage';
 
 function SignUpPage() {
   return (
-    <MessagePage text={'Sign up page mockup'} />
+    <MessagePage text="Sign up page mockup" />
   );
 }
 

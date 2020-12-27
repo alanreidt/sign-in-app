@@ -2,7 +2,7 @@ import MessagePage from '../components/MessagePage';
 
 function PasswordRecoveryPage() {
   return (
-    <MessagePage text={'Password recovery page mockup'} />
+    <MessagePage text="Password recovery page mockup" />
   );
 }
 
