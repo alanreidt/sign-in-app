@@ -1,4 +1,5 @@
 import Input from './Input';
+import VisibilityToggle from './VisibilityToggle';
 
 function PasswordInput(props) {
   const {
@@ -18,6 +19,7 @@ function PasswordInput(props) {
       name={name}
       placeholder={placeholder}
       autoComplete={autoComplete}
+      icon={<VisibilityToggle/>}
       {...restProps}
     />
   );
