@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Page from '../components/Page';
@@ -27,6 +28,7 @@ const Error = styled.p`
 `;
 
 function HomePage() {
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [areCredentialsWrong, setAreCredentialsWrong] = useState(false);
@@ -43,10 +45,16 @@ function HomePage() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    setAreCredentialsWrong(!checkCredentialsRightness({
+    const areCredentialsRight = checkCredentialsRightness({
       email,
       password,
-    }));
+    });
+
+    setAreCredentialsWrong(!areCredentialsRight);
+
+    if (areCredentialsRight) {
+      history.push('success');
+    }
   };
 
   return (
