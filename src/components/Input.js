@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+const inputPaddingSize = '15px';
+
+const InputGroup = styled.div`
+  position: relative;
+`;
+
 const Label = styled.label`
   display: block;
   margin-bottom: 5px;
@@ -10,7 +16,7 @@ const Label = styled.label`
 const StyledInput = styled.input`
   display: block;
   width: 100%;
-  padding: 15px;
+  padding: ${inputPaddingSize};
 
   font-family: inherit;
   font-size: 16px;
@@ -22,15 +28,23 @@ const StyledInput = styled.input`
   box-sizing: border-box;
 `;
 
+const InputIcon = styled.div`
+  position: absolute;
+  bottom: ${inputPaddingSize};
+  right: ${inputPaddingSize};
+  z-index: 100;
+`;
+
 function Input(props) {
   const {
     labelText,
     id,
+    icon,
     ...restProps
   } = props;
 
   return (
-    <div>
+    <InputGroup>
       <Label htmlFor={id}>
         {labelText}
       </Label>
@@ -38,7 +52,12 @@ function Input(props) {
         id={id}
         {...restProps}
       />
-    </div>
+      {icon && (
+        <InputIcon>
+          {icon}
+        </InputIcon>
+      )}
+    </InputGroup>
   );
 }
 
