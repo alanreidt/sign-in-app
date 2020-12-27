@@ -1,17 +1,8 @@
-import styled from 'styled-components';
-
-import Page from '../components/Page';
-
-const SuccessMessage = styled.p`
-  font-size: 30px;
-  color: green;
-`;
+import MessagePage from '../components/MessagePage';
 
 function SuccessPage() {
   return (
-    <Page>
-      <SuccessMessage>Success</SuccessMessage>
-    </Page>
+    <MessagePage type={'success'} text={'Success'} />
   );
 }
 
