@@ -6,11 +6,17 @@ import {
 
 import { useAuth } from '../utils/hooks';
 
-function PrivateRoute({ children, ...rest }) {
-  let auth = useAuth();
+function PrivateRoute(props) {
+  const {
+    children,
+    ...restProps
+  } = props;
+
+  const auth = useAuth();
+
   return (
     <Route
-      {...rest}
+      {...restProps}
       render={({ location }) => auth.user ? (
         children
       ) : (

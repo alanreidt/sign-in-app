@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 import { useAuth } from '../utils/hooks';
 
 export function AuthButton() {
-  let history = useHistory();
-  let auth = useAuth();
+  const history = useHistory();
+  const auth = useAuth();
 
   return auth.user ? (
     <p>
