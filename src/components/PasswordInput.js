@@ -1,5 +1,13 @@
+import { useState } from 'react';
+
 import Input from './Input';
 import VisibilityToggle from './VisibilityToggle';
+
+const toggleType = (doToggle) => doToggle ? 'text' : 'password';
+const toggleTitle = (doToggle) => `${doToggle ? 'Hide' : 'Show'} password`;
+const toggleAriaLabel = (doToggle) => doToggle
+  ? 'Hide password'
+  : 'Show password as plain text. Warning: this will display your password on the screen';
 
 function PasswordInput(props) {
   const {
@@ -11,15 +19,30 @@ function PasswordInput(props) {
     ...restProps
   } = props;
 
+  const [isPasswordShown, setIsPasswordShown] = useState(false);
+
+  const handleVisibilityToggleClick = () => {
+    setIsPasswordShown((value) => !value);
+  };
+
+  const visibilityToggle = (
+    <VisibilityToggle
+      ariaLabel={toggleAriaLabel(isPasswordShown)}
+      title={toggleTitle(isPasswordShown)}
+      isItemShown={isPasswordShown}
+      onClick={handleVisibilityToggleClick}
+    />
+  );
+
   return (
     <Input
-      type="password"
+      type={toggleType(isPasswordShown)}
       labelText={labelText}
       id={id}
       name={name}
       placeholder={placeholder}
       autoComplete={autoComplete}
-      icon={<VisibilityToggle/>}
+      icon={visibilityToggle}
       {...restProps}
     />
   );
