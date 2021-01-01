@@ -6,10 +6,10 @@ const StyledPage = styled.div`
   align-items: flex-start;
 
   min-height: 100vh;
-  margin-top: 100px;
+  padding-top: 100px;
 
   @media(max-height: 400px) {
-    margin-top: 10px;
+    padding-top: 10px;
   }
 `;
 
@@ -19,7 +19,9 @@ function Page(props) {
   } = props;
 
   return (
-    <StyledPage>{children}</StyledPage>
+    <StyledPage>
+      {children}
+    </StyledPage>
   );
 }
 

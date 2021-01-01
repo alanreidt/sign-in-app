@@ -7,6 +7,7 @@ import Page from '../components/Page';
 import Box from '../components/Box';
 import Input from '../components/Input';
 import PasswordInput from '../components/PasswordInput';
+import Container from '../components/Container';
 import Button from '../components/Button';
 
 const Spacing = styled.div`
@@ -18,11 +19,6 @@ const Spacing = styled.div`
 const Error = styled.p`
   display: ${(props) => props.show ? 'block' : 'none'};
   color: red;
-`;
-
-const SignInPageButton = styled.div`
-  display: flex;
-  justify-content: flex-end;
 `;
 
 function SignInPage() {
@@ -90,9 +86,9 @@ function SignInPage() {
               Wrong email or password
             </Error>
 
-            <SignInPageButton>
+            <Container alignItems="flex-end">
               <Button>Sign in</Button>
-            </SignInPageButton>
+            </Container>
           </Spacing>
         </form>
       </Box>

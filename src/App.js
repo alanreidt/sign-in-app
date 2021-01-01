@@ -13,41 +13,44 @@ import SignInAccountsPage from './pages/SignInAccountsPage';
 import PasswordRecoveryPage from './pages/PasswordRecoveryPage';
 import SuccessPage from './pages/SuccessPage';
 import HomePage from './pages/HomePage';
+import Container from './components/Container';
 
 function App() {
   return (
     <div className="App">
-      <AuthButton />
+      <Container maxWidth={1120}>
+        <AuthButton />
 
-      <ul>
-        <li>
-          <Link to="/">Home (public page)</Link>
-        </li>
-        <li>
-          <Link to="/success">Success (protected page)</Link>
-        </li>
-      </ul>
+        <ul>
+          <li>
+            <Link to="/">Home (public page)</Link>
+          </li>
+          <li>
+            <Link to="/success">Success (protected page)</Link>
+          </li>
+        </ul>
 
-      <Switch>
-        <Route path="/sign-up">
-          <SignUpPage/>
-        </Route>
-        <Route path="/sign-in">
-          <SignInPage/>
-        </Route>
-        <Route path="/sign-in-accounts">
-          <SignInAccountsPage/>
-        </Route>
-        <Route path="/password-recovery">
-          <PasswordRecoveryPage/>
-        </Route>
-        <PrivateRoute path="/success">
-          <SuccessPage/>
-        </PrivateRoute>
-        <Route path="/">
-          <HomePage/>
-        </Route>
-      </Switch>
+        <Switch>
+          <Route path="/sign-up">
+            <SignUpPage/>
+          </Route>
+          <Route path="/sign-in">
+            <SignInPage/>
+          </Route>
+          <Route path="/sign-in-accounts">
+            <SignInAccountsPage/>
+          </Route>
+          <Route path="/password-recovery">
+            <PasswordRecoveryPage/>
+          </Route>
+          <PrivateRoute path="/success">
+            <SuccessPage/>
+          </PrivateRoute>
+          <Route path="/">
+            <HomePage/>
+          </Route>
+        </Switch>
+      </Container>
     </div>
   );
 }
