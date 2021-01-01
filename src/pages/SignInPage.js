@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { useAuth } from '../App';
+import { useAuth } from '../utils/hooks';
 import Page from '../components/Page';
 import Box from '../components/Box';
 import Input from '../components/Input';
