@@ -1,7 +1,22 @@
+import styled from 'styled-components';
+
+const StyledBox = styled.div`
+  display: block;
+  width: ${(props) => props.hasMaxWidth ? '100%' : 'auto'};
+  max-width: ${(props) => props.maxWidth}px;
+  padding: ${(props) => props.padding};
+
+  background-color: #eee;
+  border: 1px solid black;
+  border-radius: 3px;
+
+  box-sizing: border-box;
+`;
+
 function Box(props) {
   const {
     padding = '15px 20px',
-    maxWidth,
+    maxWidth = '',
     children,
   } = props;
 
@@ -9,23 +24,14 @@ function Box(props) {
     parseFloat(maxWidth)
   );
 
-  const sx = {
-    display: 'block',
-    width: hasMaxWidth ? '100%' : 'auto',
-    maxWidth,
-    padding,
-
-    backgroundColor: '#eee',
-    border: '1px solid black',
-    borderRadius: '3px',
-
-    boxSizing: 'border-box',
-  };
-
   return (
-    <div style={sx}>
+    <StyledBox
+      padding={padding}
+      hasMaxWidth={hasMaxWidth}
+      maxWidth={maxWidth}
+    >
       {children}
-    </div>
+    </StyledBox>
   );
 }
 
