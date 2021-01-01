@@ -20,6 +20,11 @@ const Error = styled.p`
   color: red;
 `;
 
+const SignInPageButton = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
 function SignInPage() {
   const history = useHistory();
   const location = useLocation();
@@ -85,7 +90,9 @@ function SignInPage() {
               Wrong email or password
             </Error>
 
-            <Button>Sign in</Button>
+            <SignInPageButton>
+              <Button>Sign in</Button>
+            </SignInPageButton>
           </Spacing>
         </form>
       </Box>
