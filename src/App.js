@@ -6,14 +6,14 @@ import {
   Link,
   Redirect,
   useHistory,
-  useLocation
 } from "react-router-dom";
 
-import HomePage from './pages/HomePage';
 import SignUpPage from './pages/SignUpPage';
+import SignInPage from './pages/SignInPage';
 import SignInAccountsPage from './pages/SignInAccountsPage';
 import PasswordRecoveryPage from './pages/PasswordRecoveryPage';
 import SuccessPage from './pages/SuccessPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
@@ -24,25 +24,19 @@ function App() {
 
           <ul>
             <li>
-              <Link to="/public">Public Page</Link>
+              <Link to="/">Home (public page)</Link>
             </li>
             <li>
-              <Link to="/protected">Protected Page</Link>
+              <Link to="/success">Success (protected page)</Link>
             </li>
           </ul>
 
           <Switch>
-            <Route path="/public">
-              <PublicPage />
-            </Route>
-            <Route path="/login">
-              <LoginPage />
-            </Route>
-            <PrivateRoute path="/protected">
-              <ProtectedPage />
-            </PrivateRoute>
             <Route path="/sign-up">
               <SignUpPage/>
+            </Route>
+            <Route path="/sign-in">
+              <SignInPage/>
             </Route>
             <Route path="/sign-in-accounts">
               <SignInAccountsPage/>
@@ -50,9 +44,9 @@ function App() {
             <Route path="/password-recovery">
               <PasswordRecoveryPage/>
             </Route>
-            <Route path="/success">
+            <PrivateRoute path="/success">
               <SuccessPage/>
-            </Route>
+            </PrivateRoute>
             <Route path="/">
               <HomePage/>
             </Route>
@@ -80,11 +74,30 @@ export default App;
 // and you'll see you go back to the page you visited
 // just *before* logging in, the public page.
 
+const RIGHT_CREDENTIALS = {
+  email: 'joshakins@gmail.com',
+  password: 'pumpkinjuice',
+};
+
+const checkCredentialsRightness = (credentials) => Object.entries(RIGHT_CREDENTIALS).every(
+  ([key, value]) => value === credentials[key]
+);
+
 const fakeAuth = {
   isAuthenticated: false,
-  signin(cb) {
+  signInWithEmailAndPassword(email, password) {
+    const areCredentialsRight = checkCredentialsRightness({
+      email,
+      password,
+    });
+
+    if (!areCredentialsRight) {
+      return null;
+    }
+
     fakeAuth.isAuthenticated = true;
-    setTimeout(cb, 100); // fake async
+
+    return 'user';
   },
   signout(cb) {
     fakeAuth.isAuthenticated = false;
@@ -107,18 +120,19 @@ function ProvideAuth({ children }) {
   );
 }
 
-function useAuth() {
+export function useAuth() {
   return useContext(authContext);
 }
 
 function useProvideAuth() {
   const [user, setUser] = useState(null);
 
-  const signin = cb => {
-    return fakeAuth.signin(() => {
-      setUser("user");
-      cb();
-    });
+  const signInWithEmailAndPassword = async (email, password) => {
+    const user = await fakeAuth.signInWithEmailAndPassword(email, password);
+
+    setUser(user);
+
+    return user;
   };
 
   const signout = cb => {
@@ -130,7 +144,7 @@ function useProvideAuth() {
 
   return {
     user,
-    signin,
+    signInWithEmailAndPassword,
     signout
   };
 }
@@ -168,40 +182,12 @@ function PrivateRoute({ children, ...rest }) {
         ) : (
           <Redirect
             to={{
-              pathname: "/login",
+              pathname: "/sign-in",
               state: { from: location }
             }}
           />
         )
       }
     />
-  );
-}
-
-function PublicPage() {
-  return <h3>Public</h3>;
-}
-
-function ProtectedPage() {
-  return <h3>Protected</h3>;
-}
-
-function LoginPage() {
-  let history = useHistory();
-  let location = useLocation();
-  let auth = useAuth();
-
-  let { from } = location.state || { from: { pathname: "/" } };
-  let login = () => {
-    auth.signin(() => {
-      history.replace(from);
-    });
-  };
-
-  return (
-    <div>
-      <p>You must log in to view the page at {from.pathname}</p>
-      <button onClick={login}>Log in</button>
-    </div>
   );
 }
