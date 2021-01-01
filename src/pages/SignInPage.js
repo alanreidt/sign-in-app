@@ -27,7 +27,7 @@ function SignInPage() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [areCredentialsWrong, setAreCredentialsWrong] = useState(false);
+  const [showWrongCredentialsError, setShowWrongCredentialsError] = useState(false);
 
   const { from } = location.state || { from: { pathname: '/' } };
 
@@ -37,7 +37,7 @@ function SignInPage() {
     const user = await auth.signInWithEmailAndPassword(email, password);
 
     if (user === null) {
-      setAreCredentialsWrong(true);
+      setShowWrongCredentialsError(true);
       return;
     }
 
@@ -45,7 +45,7 @@ function SignInPage() {
   };
 
   const createInputHandler = (setStateAction) => (event) => {
-    setAreCredentialsWrong(false);
+    setShowWrongCredentialsError(false);
 
     const value = event.currentTarget.value;
 
@@ -81,7 +81,7 @@ function SignInPage() {
               required={true}
             />
 
-            <Error show={areCredentialsWrong}>
+            <Error show={showWrongCredentialsError}>
               Wrong email or password
             </Error>
 
