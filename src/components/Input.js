@@ -6,6 +6,12 @@ const InputGroup = styled.div`
   position: relative;
 `;
 
+const LabelGroup = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+`;
+
 const Label = styled.label`
   display: block;
   margin-bottom: 5px;
@@ -39,15 +45,19 @@ function Input(props) {
   const {
     labelText,
     id,
+    link,
     icon,
     ...restProps
   } = props;
 
   return (
     <InputGroup>
-      <Label htmlFor={id}>
-        {labelText}
-      </Label>
+      <LabelGroup>
+        <Label htmlFor={id}>
+          {labelText}
+        </Label>
+        {link}
+      </LabelGroup>
       <StyledInput
         id={id}
         {...restProps}

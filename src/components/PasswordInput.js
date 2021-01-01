@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import Input from './Input';
 import VisibilityToggle from './VisibilityToggle';
@@ -42,6 +43,7 @@ function PasswordInput(props) {
       name={name}
       placeholder={placeholder}
       autoComplete={autoComplete}
+      link={<Link to="/password-recovery">Forgot password?</Link>}
       icon={visibilityToggle}
       {...restProps}
     />
