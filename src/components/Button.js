@@ -1,19 +1,23 @@
 import styled from 'styled-components';
 
+const buttonHeight = '44px';
+
 const StyledButton = styled.button`
   display: inline-block;
   vertical-align: top;
-  padding: 10px 24px;
+  padding: 0 24px;
 
   font-family: inherit;
   font-size: 18px;
-  line-height: normal;
+  height: ${buttonHeight};
+  line-height: ${buttonHeight};
   color: #fff;
   background-color: #24292e;
 
   border: 2px solid transparent;
   border-radius: 5px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+  box-sizing: content-box;
 
   text-transform: capitalize;
   text-decoration: none;

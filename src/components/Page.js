@@ -5,8 +5,11 @@ const StyledPage = styled.div`
   justify-content: center;
   align-items: flex-start;
 
-  min-height: 100vh;
+  width: 100%;
+  height: 100%;
   padding-top: 100px;
+
+  box-sizing: border-box;
 
   @media(max-height: 400px) {
     padding-top: 10px;

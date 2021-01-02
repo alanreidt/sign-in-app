@@ -4,6 +4,7 @@ const StyledBox = styled.div`
   display: block;
   width: ${(props) => props.hasMaxWidth ? '100%' : 'auto'};
   max-width: ${(props) => props.maxWidth}px;
+  height: 100%;
   padding: ${(props) => props.padding};
 
   background-color: #eee;

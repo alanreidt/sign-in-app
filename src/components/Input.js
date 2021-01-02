@@ -4,17 +4,21 @@ const inputPaddingSize = '15px';
 
 const InputGroup = styled.div`
   position: relative;
+
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
 `;
 
 const LabelGroup = styled.div`
   display: flex;
-  flex-wrap: nowrap;
+  flex-flow: row nowrap;
   justify-content: space-between;
-`;
-
-const Label = styled.label`
-  display: block;
   margin-bottom: 5px;
+  `;
+
+  const Label = styled.label`
+  display: block;
 
   font-size: 18px;
 `;
