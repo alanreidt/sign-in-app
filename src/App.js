@@ -4,7 +4,10 @@ import {
   Route,
   Link,
 } from 'react-router-dom';
+import styled from 'styled-components';
 
+import Container from './components/Container';
+import NavBar from './components/NavBar';
 import AuthButton from './components/AuthButton';
 import PrivateRoute from './components/PrivateRoute';
 import SignUpPage from './pages/SignUpPage';
@@ -13,23 +16,42 @@ import SignInAccountsPage from './pages/SignInAccountsPage';
 import PasswordRecoveryPage from './pages/PasswordRecoveryPage';
 import SuccessPage from './pages/SuccessPage';
 import HomePage from './pages/HomePage';
-import Container from './components/Container';
+
+const StyledContainer = styled(Container)`
+  padding-left: 30px;
+  padding-right: 30px;
+
+  @media(max-width: 1024px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+`;
+
+const containerMaxWidth = '1120px';
 
 function App() {
   return (
     <div className="App">
-      <Container maxWidth={1120}>
-        <AuthButton />
+      <NavBar>
+        <StyledContainer
+          flexFlow="row nowrap"
+          justifyContent="space-between"
+          maxWidth={containerMaxWidth}
+        >
+          <ul>
+            <li>
+              <Link to="/">Home (public page)</Link>
+            </li>
+            <li>
+              <Link to="/success">Success (protected page)</Link>
+            </li>
+          </ul>
 
-        <ul>
-          <li>
-            <Link to="/">Home (public page)</Link>
-          </li>
-          <li>
-            <Link to="/success">Success (protected page)</Link>
-          </li>
-        </ul>
+          <AuthButton />
+        </StyledContainer>
+      </NavBar>
 
+      <StyledContainer maxWidth={containerMaxWidth}>
         <Switch>
           <Route path="/sign-up">
             <SignUpPage/>
@@ -50,7 +72,7 @@ function App() {
             <HomePage/>
           </Route>
         </Switch>
-      </Container>
+      </StyledContainer>
     </div>
   );
 }

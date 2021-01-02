@@ -1,13 +1,14 @@
 import styled, { css } from 'styled-components';
 
 export default styled.div`
-  ${({ alignItems, maxWidth }) => css`
+  ${({ flexFlow, justifyContent, alignItems, maxWidth }) => css`
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: ${flexFlow || 'column nowrap'};
     align-items: ${alignItems};
+    justify-content: ${justifyContent};
 
     width: 100%;
-    max-width: ${maxWidth}px;
+    max-width: ${maxWidth};
     margin: 0 auto;
 
     box-sizing: border-box;
