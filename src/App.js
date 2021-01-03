@@ -26,6 +26,11 @@ const StyledContainer = styled(Container)`
     padding-left: 20px;
     padding-right: 20px;
   }
+
+  @media(max-width: 450px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 `;
 
 const Logo = styled.h1`
@@ -36,6 +41,10 @@ const Logo = styled.h1`
   font-weight: 700;
   color: #000;
   text-decoration: none;
+
+  @media(max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 const containerMaxWidth = '1120px';

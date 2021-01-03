@@ -1,22 +1,19 @@
 import styled from 'styled-components';
 
-const buttonHeight = '48px';
-const buttonBorderSize = '2px';
-
 const StyledButton = styled.button`
   display: inline-block;
   vertical-align: top;
-  padding: 0 24px;
+  padding: 0 1.3em;
   min-width: 105px;
-  height: ${buttonHeight};
+  height: 2.6em;
 
   font-family: inherit;
   font-size: 18px;
-  line-height: ${buttonHeight - 2 * buttonBorderSize};
+  line-height: normal;
   color: #fff;
   background-color: #24292e;
 
-  border: ${buttonBorderSize} solid transparent;
+  border: 2px solid transparent;
   border-radius: 5px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
   box-sizing: border-box;
@@ -29,6 +26,10 @@ const StyledButton = styled.button`
 
   transform: translate3d(0, 0, 0);
   transition: all 0.3s ease;
+
+  @media(max-width: 768px) {
+    font-size: 16px;
+  }
 
   &:hover,
   &:focus {

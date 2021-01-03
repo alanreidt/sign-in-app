@@ -12,6 +12,14 @@ import Button from './Button';
 const StyledBox = styled(Box)`
   padding: 15px 20px;
 
+  @media (max-width: 768px) {
+    padding: 15px 20px;
+  }
+
+  @media (max-width: 450px) {
+    padding: 10px 12px;
+  }
+
   background-color: #e6f3ff;
   border: 1px solid #333;
 `;

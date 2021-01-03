@@ -21,6 +21,10 @@ const LabelGroup = styled.div`
   display: block;
 
   font-size: 18px;
+
+  @media(max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const StyledInput = styled.input`
