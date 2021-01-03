@@ -1,13 +1,10 @@
-import styled from 'styled-components';
+import Icon from './Icon';
+import { ReactComponent as RawVisibilityOffIcon } from '../assets/visibility_off.svg';
 
-import { ReactComponent as VisibilityOffIcon } from '../assets/visibility_off.svg';
+function VisibilityOffIcon(props) {
+  return (
+    <Icon as={RawVisibilityOffIcon} {...props} />
+  );
+}
 
-export default styled(VisibilityOffIcon)`
-  display: inline-block;
-  vertical-align: top;
-
-  @media(max-width: 768px) {
-    width: 22px;
-    height: 22px;
-  }
-`;
+export default VisibilityOffIcon;

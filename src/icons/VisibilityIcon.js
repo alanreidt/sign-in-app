@@ -1,13 +1,10 @@
-import styled from 'styled-components';
+import Icon from './Icon';
+import { ReactComponent as RawVisibilityIcon } from '../assets/visibility.svg';
 
-import { ReactComponent as VisibilityIcon } from '../assets/visibility.svg';
+function VisibilityIcon(props) {
+  return (
+    <Icon as={RawVisibilityIcon} {...props} />
+  );
+}
 
-export default styled(VisibilityIcon)`
-  display: inline-block;
-  vertical-align: top;
-
-  @media(max-width: 768px) {
-    width: 22px;
-    height: 22px;
-  }
-`;
+export default VisibilityIcon;
