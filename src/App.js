@@ -69,28 +69,30 @@ function App() {
         </StyledContainer>
       </NavBar>
 
-      <StyledContainer maxWidth={containerMaxWidth}>
-        <Switch>
-          <Route path="/sign-up">
-            <SignUpPage/>
-          </Route>
-          <Route path="/sign-in">
-            <SignInPage/>
-          </Route>
-          <Route path="/sign-in-accounts">
-            <SignInAccountsPage/>
-          </Route>
-          <Route path="/password-recovery">
-            <PasswordRecoveryPage/>
-          </Route>
-          <PrivateRoute path="/success">
-            <SuccessPage/>
-          </PrivateRoute>
-          <Route path="/">
-            <HomePage/>
-          </Route>
-        </Switch>
-      </StyledContainer>
+      <main>
+        <StyledContainer maxWidth={containerMaxWidth}>
+          <Switch>
+            <Route path="/sign-up">
+              <SignUpPage/>
+            </Route>
+            <Route path="/sign-in">
+              <SignInPage/>
+            </Route>
+            <Route path="/sign-in-accounts">
+              <SignInAccountsPage/>
+            </Route>
+            <Route path="/password-recovery">
+              <PasswordRecoveryPage/>
+            </Route>
+            <PrivateRoute path="/success">
+              <SuccessPage/>
+            </PrivateRoute>
+            <Route path="/">
+              <HomePage/>
+            </Route>
+          </Switch>
+        </StyledContainer>
+      </main>
     </div>
   );
 }

@@ -85,6 +85,7 @@ function SignInBox(props) {
             placeholder="georgerowlett@example.com"
             spellCheck="false"
             autoComplete="email"
+            autoFocus={true}
             required={true}
           />
 
