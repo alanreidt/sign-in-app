@@ -3,6 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { useAuth } from '../utils/hooks';
+import { RIGHT_CREDENTIALS } from '../utils/constants';
 import Box from './Box';
 import Input from './Input';
 import PasswordInput from './PasswordInput';
@@ -60,6 +61,11 @@ function SignInBox(props) {
     history.replace(from);
   };
 
+  const handleHelpButtonClick = () => {
+    setEmail(RIGHT_CREDENTIALS.email);
+    setPassword(RIGHT_CREDENTIALS.password);
+  }
+
   const createInputHandler = (setStateAction) => (event) => {
     setShowWrongCredentialsError(false);
 
@@ -99,7 +105,15 @@ function SignInBox(props) {
             Wrong email or password
           </Error>
 
-          <Container alignItems="flex-end">
+          <Container flexFlow="row wrap" alignItems="center" justifyContent="space-between">
+            <Button
+              primitive
+              type="button"
+              onClick={handleHelpButtonClick}
+            >
+              Insert right credentials
+            </Button>
+
             <Button>Sign in</Button>
           </Container>
         </Spacing>

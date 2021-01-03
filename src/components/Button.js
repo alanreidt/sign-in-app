@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
   display: inline-block;
@@ -36,6 +36,16 @@ const StyledButton = styled.button`
     box-shadow: 0 8px 8px rgba(0, 0, 0, .25);
     transform: translate3d(0, -3px, 0);
   }
+
+  ${(props) => props.primitive && css`
+    height: 2.1em;
+    padding: 0 1em;
+
+    font-size: 14px;
+    color: #24292e;
+    background-color: transparent;
+    border: 1px solid #24292e;
+  `}
 `;
 
 function Button(props) {
