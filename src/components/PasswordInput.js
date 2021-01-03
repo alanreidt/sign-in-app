@@ -28,7 +28,7 @@ function PasswordInput(props) {
 
   const visibilityToggle = (
     <VisibilityToggle
-      ariaLabel={toggleAriaLabel(isPasswordShown)}
+      aria-label={toggleAriaLabel(isPasswordShown)}
       title={toggleTitle(isPasswordShown)}
       isItemShown={isPasswordShown}
       onClick={handleVisibilityToggleClick}
