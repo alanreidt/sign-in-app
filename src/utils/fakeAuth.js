@@ -1,4 +1,4 @@
-import { checkCredentialsRightness } from "./helpers";
+import { checkCredentialsRightness } from './helpers';
 
 const fakeAuth = {
   isAuthenticated: false,
@@ -12,13 +12,12 @@ const fakeAuth = {
       return null;
     }
 
-    fakeAuth.isAuthenticated = true;
+    this.isAuthenticated = true;
 
     return 'user';
   },
-  signout(cb) {
-    fakeAuth.isAuthenticated = false;
-    setTimeout(cb, 100);
+  signout() {
+    this.isAuthenticated = false;
   }
 };
 

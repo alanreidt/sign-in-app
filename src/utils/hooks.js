@@ -14,11 +14,10 @@ function useProvideAuth() {
     return user;
   };
 
-  const signout = cb => {
-    return fakeAuth.signout(() => {
-      setUser(null);
-      cb();
-    });
+  const signout = async () => {
+    await fakeAuth.signout();
+
+    setUser(null);
   };
 
   return {
