@@ -9,6 +9,13 @@ import PasswordInput from './PasswordInput';
 import Container from './Container';
 import Button from './Button';
 
+const StyledBox = styled(Box)`
+  padding: 15px 20px;
+
+  background-color: #e6f3ff;
+  border: 1px solid #333;
+`;
+
 const Spacing = styled.div`
   & > *:not(:last-child) {
     margin-bottom: ${(props) => props.vertical || '10px'};
@@ -20,7 +27,7 @@ const Error = styled.p`
   color: red;
 `;
 
-function SignInBox() {
+function SignInBox(props) {
   const history = useHistory();
   const location = useLocation();
   const auth = useAuth();
@@ -57,7 +64,7 @@ function SignInBox() {
   const handlePasswordChange = createInputHandler(setPassword);
 
   return (
-    <Box maxWidth={450}>
+    <StyledBox maxWidth="450px" {...props}>
       <form onSubmit={handleFormSubmit}>
         <Spacing vertical="15px">
           <Input
@@ -88,7 +95,7 @@ function SignInBox() {
           </Container>
         </Spacing>
       </form>
-    </Box>
+    </StyledBox>
   );
 }
 

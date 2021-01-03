@@ -1,39 +1,15 @@
 import styled from 'styled-components';
 
-const StyledBox = styled.div`
+export default styled.div`
   display: block;
-  width: ${(props) => props.hasMaxWidth ? '100%' : 'auto'};
-  max-width: ${(props) => props.maxWidth}px;
+  width: ${(props) => props.maxWidth ? '100%' : 'auto'};
+  max-width: ${(props) => props.maxWidth};
   height: 100%;
-  padding: ${(props) => props.padding};
+  padding: 10px 14px;
 
-  background-color: #eee;
-  border: 1px solid black;
+  background-color: #f5f5f5;
+  border: 1px solid #d2d2d2;
   border-radius: 3px;
 
   box-sizing: border-box;
 `;
-
-function Box(props) {
-  const {
-    padding = '15px 20px',
-    maxWidth = '',
-    children,
-  } = props;
-
-  const hasMaxWidth = Number.isFinite(
-    parseFloat(maxWidth)
-  );
-
-  return (
-    <StyledBox
-      padding={padding}
-      hasMaxWidth={hasMaxWidth}
-      maxWidth={maxWidth}
-    >
-      {children}
-    </StyledBox>
-  );
-}
-
-export default Box;
