@@ -3,6 +3,7 @@ import {
   Switch,
   Route,
   Link,
+  useLocation,
 } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -27,25 +28,33 @@ const StyledContainer = styled(Container)`
   }
 `;
 
+const Logo = styled.h1`
+  margin-top: 0;
+  margin-bottom: 0;
+
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  text-decoration: none;
+`;
+
 const containerMaxWidth = '1120px';
 
 function App() {
+  const location = useLocation();
+  const mainPagePathname = '/';
+  const isMainPage = location.pathname === '/';
+
   return (
     <div className="App">
       <NavBar>
         <StyledContainer
           flexFlow="row nowrap"
+          alignItems="center"
           justifyContent="space-between"
           maxWidth={containerMaxWidth}
         >
-          <ul>
-            <li>
-              <Link to="/">Home (public page)</Link>
-            </li>
-            <li>
-              <Link to="/success">Success (protected page)</Link>
-            </li>
-          </ul>
+          <Logo as={isMainPage ? 'h1' : Link} to={mainPagePathname}>Sign In App</Logo>
 
           <AuthButton />
         </StyledContainer>

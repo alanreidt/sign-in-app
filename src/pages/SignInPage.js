@@ -30,7 +30,6 @@ function SignInPage() {
   const [password, setPassword] = useState('');
   const [showWrongCredentialsError, setShowWrongCredentialsError] = useState(false);
 
-  const { from } = location.state || { from: { pathname: '/' } };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -41,6 +40,8 @@ function SignInPage() {
       setShowWrongCredentialsError(true);
       return;
     }
+
+    const { from } = location.state || { from: { pathname: '/success' } };
 
     history.replace(from);
   };
@@ -59,8 +60,6 @@ function SignInPage() {
   return (
     <Page>
       <Box maxWidth={450}>
-        <p>You must log in to view the page at {from.pathname}</p>
-
         <form onSubmit={handleFormSubmit}>
           <Spacing vertical="15px">
             <Input
