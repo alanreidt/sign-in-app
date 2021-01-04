@@ -42,9 +42,18 @@ const StyledButton = styled.button`
     padding: 0 1em;
 
     font-size: 14px;
-    color: #24292e;
+    color: #6a747d;
     background-color: transparent;
-    border: 1px solid #24292e;
+    border: 1px solid #6a747d;
+
+    text-transform: initial;
+    box-shadow: none;
+
+    &:hover,
+    &:focus {
+      box-shadow: none;
+      transform: translate3d(0, 0, 0);
+    }
   `}
 `;
 
