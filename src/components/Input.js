@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from "../utils/cssVariables";
+
 const inputPaddingSize = '15px';
 
 const InputGroup = styled.div`
@@ -22,7 +24,7 @@ const LabelGroup = styled.div`
 
   font-size: 18px;
 
-  @media(max-width: 768px) {
+  @media(${BREAKPOINTS.tablet}) {
     font-size: 16px;
   }
 `;

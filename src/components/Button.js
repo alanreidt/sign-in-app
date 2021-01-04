@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { BREAKPOINTS } from "../utils/cssVariables";
+
 const StyledButton = styled.button`
   display: inline-block;
   vertical-align: top;
@@ -27,7 +29,7 @@ const StyledButton = styled.button`
   transform: translate3d(0, 0, 0);
   transition: all 0.3s ease;
 
-  @media(max-width: 768px) {
+  @media(${BREAKPOINTS.tablet}) {
     font-size: 16px;
   }
 

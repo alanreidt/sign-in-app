@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from "../utils/cssVariables";
+
 export default styled.header`
   display: block;
   width: 100%;
@@ -8,12 +10,12 @@ export default styled.header`
 
   border-bottom: 1px solid #eaeaea;
 
-  @media (max-width: 1024px) {
+  @media (${BREAKPOINTS.desktop}) {
     padding-top: 15px;
     padding-bottom: 15px;
   }
 
-  @media(max-width: 450px) {
+  @media(${BREAKPOINTS.mobile}) {
     padding-top: 10px;
     padding-bottom: 10px;
   }

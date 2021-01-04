@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from "../utils/cssVariables";
 import { useAuth } from '../utils/hooks';
 import { RIGHT_CREDENTIALS } from '../utils/constants';
 import Box from './Box';
@@ -13,11 +14,11 @@ import Button from './Button';
 const StyledBox = styled(Box)`
   padding: 15px 20px;
 
-  @media (max-width: 768px) {
+  @media (${BREAKPOINTS.tablet}) {
     padding: 15px 20px;
   }
 
-  @media (max-width: 450px) {
+  @media (${BREAKPOINTS.mobile}) {
     padding: 10px 12px;
   }
 

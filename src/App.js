@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from "./utils/cssVariables";
 import Container from './components/Container';
 import NavBar from './components/NavBar';
 import AuthButton from './components/AuthButton';
@@ -22,12 +23,12 @@ const StyledContainer = styled(Container)`
   padding-left: 30px;
   padding-right: 30px;
 
-  @media(max-width: 1024px) {
+  @media(${BREAKPOINTS.desktop}) {
     padding-left: 20px;
     padding-right: 20px;
   }
 
-  @media(max-width: 450px) {
+  @media(${BREAKPOINTS.mobile}) {
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -42,7 +43,7 @@ const Logo = styled.h1`
   color: #000;
   text-decoration: none;
 
-  @media(max-width: 768px) {
+  @media(${BREAKPOINTS.tablet}) {
     font-size: 20px;
   }
 `;
