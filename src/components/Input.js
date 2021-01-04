@@ -35,6 +35,10 @@ const InputLink = styled.div`
   font-size: 0.9em;
 `;
 
+const InputWrapper = styled.div`
+  position: relative;
+`;
+
 const StyledInput = styled.input`
   display: block;
   width: 100%;
@@ -52,7 +56,8 @@ const StyledInput = styled.input`
 
 const InputIcon = styled.div`
   position: absolute;
-  bottom: ${inputPaddingSize};
+  top: 50%;
+  transform: translateY(-50%);
   right: ${inputPaddingSize};
   z-index: 100;
 `;
@@ -79,15 +84,17 @@ function Input(props) {
         )}
       </LabelGroup>
 
-      <StyledInput
-        id={id}
-        {...restProps}
-      />
-      {icon && (
-        <InputIcon>
-          {icon}
-        </InputIcon>
-      )}
+      <InputWrapper>
+        <StyledInput
+          id={id}
+          {...restProps}
+        />
+        {icon && (
+          <InputIcon>
+            {icon}
+          </InputIcon>
+        )}
+      </InputWrapper>
     </InputGroup>
   );
 }
