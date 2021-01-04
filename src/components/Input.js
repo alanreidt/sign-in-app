@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { BREAKPOINTS } from "../utils/cssVariables";
 
-const inputPaddingSize = '15px';
+const inputPaddingSize = '0.9375em';
 
 const InputGroup = styled.div`
   position: relative;
@@ -10,6 +10,12 @@ const InputGroup = styled.div`
   display: inline-block;
   vertical-align: top;
   width: 100%;
+
+  font-size: 18px;
+
+  @media(${BREAKPOINTS.tablet}) {
+    font-size: 16px;
+  }
 `;
 
 const LabelGroup = styled.div`
@@ -22,11 +28,11 @@ const LabelGroup = styled.div`
 const Label = styled.label`
   display: block;
 
-  font-size: 18px;
+  font-size: 1em;
+`;
 
-  @media(${BREAKPOINTS.tablet}) {
-    font-size: 16px;
-  }
+const InputLink = styled.div`
+  font-size: 0.9em;
 `;
 
 const StyledInput = styled.input`
@@ -35,7 +41,7 @@ const StyledInput = styled.input`
   padding: ${inputPaddingSize};
 
   font-family: inherit;
-  font-size: 16px;
+  font-size: 0.9em;
 
   color: inherit;
   border: 1px solid rgba(0, 0, 0, .25);
@@ -66,8 +72,13 @@ function Input(props) {
         <Label htmlFor={id}>
           {labelText}
         </Label>
-        {link}
+        {link && (
+          <InputLink>
+            {link}
+          </InputLink>
+        )}
       </LabelGroup>
+
       <StyledInput
         id={id}
         {...restProps}
