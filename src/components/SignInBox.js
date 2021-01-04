@@ -26,14 +26,27 @@ const StyledBox = styled(Box)`
   border: 1px solid #333;
 `;
 
-const Spacing = styled.div`
-  & > *:not(:last-child) {
-    margin-bottom: ${(props) => props.vertical || '10px'};
+const FormItem = styled.div`
+  margin-bottom: 15px;
+
+  @media (${BREAKPOINTS.mobile}) {
+    margin-bottom: 10px;
+  }
+  `;
+
+  const FormFooter = styled.div`
+  margin-top: 30px;
+
+  @media (${BREAKPOINTS.mobile}) {
+    margin-bottom: 20px;
   }
 `;
 
 const Error = styled.p`
   display: ${(props) => props.show ? 'block' : 'none'};
+  margin-top: 0;
+  margin-bottom: 0;
+
   color: red;
 `;
 
@@ -81,7 +94,7 @@ function SignInBox(props) {
   return (
     <StyledBox maxWidth="450px" {...props}>
       <form onSubmit={handleFormSubmit}>
-        <Spacing vertical="15px">
+        <FormItem>
           <Input
             onChange={handleEmailChange}
             labelText="Email:"
@@ -95,17 +108,23 @@ function SignInBox(props) {
             autoFocus={true}
             required={true}
           />
+        </FormItem>
 
+        <FormItem>
           <PasswordInput
             onChange={handlePasswordChange}
             value={password}
             required={true}
           />
+        </FormItem>
 
+        <FormItem>
           <Error show={showWrongCredentialsError}>
             Wrong email or password
           </Error>
+        </FormItem>
 
+        <FormFooter>
           <Container flexFlow="row wrap" alignItems="center" justifyContent="space-between">
             <Button
               primitive
@@ -117,7 +136,7 @@ function SignInBox(props) {
 
             <Button>Sign in</Button>
           </Container>
-        </Spacing>
+        </FormFooter>
       </form>
     </StyledBox>
   );
