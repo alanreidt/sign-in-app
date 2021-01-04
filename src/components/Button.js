@@ -51,6 +51,10 @@ const StyledButton = styled.button`
     text-transform: initial;
     box-shadow: none;
 
+    @media(${BREAKPOINTS.tablet}) {
+      font-size: 12px;
+    }
+
     &:hover,
     &:focus {
       box-shadow: none;
