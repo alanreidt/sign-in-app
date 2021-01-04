@@ -17,9 +17,9 @@ const LabelGroup = styled.div`
   flex-flow: row nowrap;
   justify-content: space-between;
   margin-bottom: 5px;
-  `;
+`;
 
-  const Label = styled.label`
+const Label = styled.label`
   display: block;
 
   font-size: 18px;

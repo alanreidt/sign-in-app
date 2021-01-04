@@ -22,8 +22,8 @@ function VisibilityToggle(props) {
   return (
     <RawButton type="button" {...restProps}>
       {isItemShown
-        ? <VisibilityOffIcon/>
-        : <VisibilityIcon/>
+        ? <VisibilityOffIcon />
+        : <VisibilityIcon />
       }
     </RawButton>
   );

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { BREAKPOINTS } from "../utils/cssVariables";
 import { useAuth } from '../utils/hooks';
 import { RIGHT_CREDENTIALS } from '../utils/constants';
+
 import Box from './Box';
 import Input from './Input';
 import PasswordInput from './PasswordInput';
@@ -32,9 +33,9 @@ const FormItem = styled.div`
   @media (${BREAKPOINTS.mobile}) {
     margin-bottom: 10px;
   }
-  `;
+`;
 
-  const FormFooter = styled.div`
+const FormFooter = styled.div`
   margin-top: 30px;
 
   @media (${BREAKPOINTS.mobile}) {

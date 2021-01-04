@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const typeToColor = (type) => {
-  switch(type) {
+  switch (type) {
     case 'success': {
       return 'green';
     }

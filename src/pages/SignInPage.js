@@ -12,7 +12,7 @@ const StyledSignInBox = styled(SignInBox)`
 function SignInPage() {
   return (
     <Page>
-      <StyledSignInBox/>
+      <StyledSignInBox />
 
       <Box>
         Don't have an account? <Link to="sign-up">Sign up</Link>

@@ -8,6 +8,7 @@ import {
 import styled from 'styled-components';
 
 import { BREAKPOINTS } from "./utils/cssVariables";
+
 import Container from './components/Container';
 import NavBar from './components/NavBar';
 import AuthButton from './components/AuthButton';
@@ -74,22 +75,22 @@ function App() {
         <StyledContainer maxWidth={containerMaxWidth}>
           <Switch>
             <Route path="/sign-up">
-              <SignUpPage/>
+              <SignUpPage />
             </Route>
             <Route path="/sign-in">
-              <SignInPage/>
+              <SignInPage />
             </Route>
             <Route path="/sign-in-accounts">
-              <SignInAccountsPage/>
+              <SignInAccountsPage />
             </Route>
             <Route path="/password-recovery">
-              <PasswordRecoveryPage/>
+              <PasswordRecoveryPage />
             </Route>
             <PrivateRoute path="/success">
-              <SuccessPage/>
+              <SuccessPage />
             </PrivateRoute>
             <Route path="/">
-              <HomePage/>
+              <HomePage />
             </Route>
           </Switch>
         </StyledContainer>
