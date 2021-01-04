@@ -39,7 +39,7 @@ const FormFooter = styled.div`
   margin-top: 30px;
 
   @media (${BREAKPOINTS.mobile}) {
-    margin-bottom: 20px;
+    margin-top: 20px;
   }
 `;
 
