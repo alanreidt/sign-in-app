@@ -12,10 +12,10 @@ import Container from './Container';
 import Button from './Button';
 
 const StyledBox = styled(Box)`
-  padding: 15px 20px;
+  padding: 14px 20px;
 
   @media (${BREAKPOINTS.tablet}) {
-    padding: 15px 20px;
+    padding: 12px 16px;
   }
 
   @media (${BREAKPOINTS.mobile}) {
