@@ -84,7 +84,7 @@ function SignInBox(props) {
     }
   }, [doExecuteSignInQuery, signInQuery]);
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
 
     setDoExecuteSignInQuery(true);
@@ -138,7 +138,11 @@ function SignInBox(props) {
         </FormItem>
 
         <FormFooter>
-          <Container flexFlow="row wrap" alignItems="center" justifyContent="space-between">
+          <Container
+            flexFlow="row wrap"
+            alignItems="center"
+            justifyContent="space-between"
+          >
             <Button
               primitive
               type="button"
