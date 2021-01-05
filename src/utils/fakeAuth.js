@@ -1,23 +1,18 @@
-import { checkCredentialsRightness } from './helpers';
+import { checkCredentialsRightness, delay } from './helpers';
 
 const fakeAuth = {
   isAuthenticated: false,
-  signInWithEmailAndPassword(email, password) {
-    const areCredentialsRight = checkCredentialsRightness({
-      email,
-      password,
-    });
-
-    if (!areCredentialsRight) {
-      return null;
-    }
-
+  async signInWithEmailAndPassword(email, password) {
     this.isAuthenticated = true;
 
-    return 'user';
+    return await checkCredentialsRightness(email, password);
   },
-  signout() {
+  async signout() {
     this.isAuthenticated = false;
+
+    await delay(1000);
+
+    return true;
   }
 };
 
