@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { BREAKPOINTS } from "../utils/cssVariables";
-import { useAuth } from '../utils/hooks';
+import { useAuth, useAsync } from '../utils/hooks';
 import { RIGHT_CREDENTIALS } from '../utils/constants';
 
 import Box from './Box';
@@ -58,22 +58,36 @@ function SignInBox(props) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showWrongCredentialsError, setShowWrongCredentialsError] = useState(false);
+  const [doExecuteSignInQuery, setDoExecuteSignInQuery] = useState(false);
+  const signInQuery = useAsync(
+    () => auth.signInWithEmailAndPassword(email, password),
+    false
+  );
 
+  useEffect(() => {
+    if (signInQuery.status === 'success') {
+      const { from } = location.state || { from: { pathname: '/success' } };
+
+      history.replace(from);
+    }
+  });
+
+  useEffect(() => {
+    async function executeSignInQuery() {
+      await signInQuery.execute();
+    }
+
+    if (doExecuteSignInQuery) {
+      executeSignInQuery();
+
+      setDoExecuteSignInQuery(false);
+    }
+  }, [doExecuteSignInQuery, signInQuery]);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    const user = await auth.signInWithEmailAndPassword(email, password);
-
-    if (user === null) {
-      setShowWrongCredentialsError(true);
-      return;
-    }
-
-    const { from } = location.state || { from: { pathname: '/success' } };
-
-    history.replace(from);
+    setDoExecuteSignInQuery(true);
   };
 
   const handleHelpButtonClick = () => {
@@ -82,11 +96,9 @@ function SignInBox(props) {
   }
 
   const createInputHandler = (setStateAction) => (event) => {
-    setShowWrongCredentialsError(false);
+    const inputValue = event.currentTarget.value;
 
-    const value = event.currentTarget.value;
-
-    setStateAction(value);
+    setStateAction(inputValue);
   };
 
   const handleEmailChange = createInputHandler(setEmail);
@@ -120,8 +132,8 @@ function SignInBox(props) {
         </FormItem>
 
         <FormItem>
-          <Error show={showWrongCredentialsError}>
-            Wrong email or password
+          <Error show={signInQuery.status === 'error'}>
+            {signInQuery.error}
           </Error>
         </FormItem>
 
@@ -135,7 +147,9 @@ function SignInBox(props) {
               Insert right credentials
             </Button>
 
-            <Button>Sign in</Button>
+            <Button disabled={signInQuery.status === 'pending'}>
+              {signInQuery.status === 'pending' ? 'Loading...' : 'Sign In'}
+            </Button>
           </Container>
         </FormFooter>
       </form>
