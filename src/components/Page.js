@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const StyledPage = styled.div`
+  position: relative;
+
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;

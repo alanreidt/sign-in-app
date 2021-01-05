@@ -3,8 +3,6 @@ import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { BREAKPOINTS } from "../utils/cssVariables";
-import { useAuth, useAsync } from '../utils/hooks';
-import { RIGHT_CREDENTIALS } from '../utils/constants';
 
 import Box from './Box';
 import Input from './Input';
@@ -43,26 +41,21 @@ const FormFooter = styled.div`
   }
 `;
 
-const Error = styled.p`
-  display: ${(props) => props.show ? 'block' : 'none'};
-  margin-top: 0;
-  margin-bottom: 0;
-
-  color: red;
-`;
-
 function SignInBox(props) {
+  const {
+    signInQuery,
+    email,
+    password,
+    onEmailChange,
+    onPasswordChange,
+    onHelpButtonClick,
+    ...restProps
+  } = props;
+
   const history = useHistory();
   const location = useLocation();
-  const auth = useAuth();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [doExecuteSignInQuery, setDoExecuteSignInQuery] = useState(false);
-  const signInQuery = useAsync(
-    () => auth.signInWithEmailAndPassword(email, password),
-    false
-  );
 
   useEffect(() => {
     if (signInQuery.status === 'success') {
@@ -90,26 +83,12 @@ function SignInBox(props) {
     setDoExecuteSignInQuery(true);
   };
 
-  const handleHelpButtonClick = () => {
-    setEmail(RIGHT_CREDENTIALS.email);
-    setPassword(RIGHT_CREDENTIALS.password);
-  }
-
-  const createInputHandler = (setStateAction) => (event) => {
-    const inputValue = event.currentTarget.value;
-
-    setStateAction(inputValue);
-  };
-
-  const handleEmailChange = createInputHandler(setEmail);
-  const handlePasswordChange = createInputHandler(setPassword);
-
   return (
-    <StyledBox maxWidth="450px" {...props}>
+    <StyledBox maxWidth="450px" {...restProps}>
       <form onSubmit={handleFormSubmit}>
         <FormItem>
           <Input
-            onChange={handleEmailChange}
+            onChange={onEmailChange}
             labelText="Email:"
             type="email"
             value={email}
@@ -125,16 +104,10 @@ function SignInBox(props) {
 
         <FormItem>
           <PasswordInput
-            onChange={handlePasswordChange}
+            onChange={onPasswordChange}
             value={password}
             required={true}
           />
-        </FormItem>
-
-        <FormItem>
-          <Error show={signInQuery.status === 'error'}>
-            {signInQuery.error}
-          </Error>
         </FormItem>
 
         <FormFooter>
@@ -146,7 +119,7 @@ function SignInBox(props) {
             <Button
               primitive
               type="button"
-              onClick={handleHelpButtonClick}
+              onClick={onHelpButtonClick}
             >
               Insert right credentials
             </Button>
