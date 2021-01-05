@@ -27,7 +27,8 @@ const StyledButton = styled.button`
   cursor: pointer;
 
   transform: translate3d(0, 0, 0);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease;
 
   @media(${BREAKPOINTS.tablet}) {
     font-size: 16px;
@@ -38,6 +39,10 @@ const StyledButton = styled.button`
     box-shadow: 0 8px 8px rgba(0, 0, 0, .25);
     transform: translate3d(0, -3px, 0);
   }
+
+  ${(props) => props.disabled && css`
+    background-color: #4e565f;
+  `}
 
   ${(props) => props.primitive && css`
     height: 2.1em;
