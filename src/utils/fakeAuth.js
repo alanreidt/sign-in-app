@@ -1,4 +1,4 @@
-import { checkCredentialsRightness, delay } from './helpers';
+import { checkCredentialsRightness } from './helpers';
 
 const fakeAuth = {
   isAuthenticated: false,
@@ -9,8 +9,6 @@ const fakeAuth = {
   },
   async signout() {
     this.isAuthenticated = false;
-
-    await delay(1000);
 
     return true;
   }
