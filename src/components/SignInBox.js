@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { BREAKPOINTS } from "../utils/cssVariables";
 import { useAuth, useAsync } from '../utils/hooks';
@@ -28,27 +28,42 @@ const StyledBox = styled(Box)`
 `;
 
 const FormItem = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 0;
 
-  @media (${BREAKPOINTS.mobile}) {
-    margin-bottom: 10px;
-  }
+  ${(props) => !props.last && css`
+    margin-bottom: 15px;
+
+    @media (${BREAKPOINTS.mobile}) {
+      margin-bottom: 10px;
+    }
+  `}
 `;
 
 const FormFooter = styled.div`
-  margin-top: 30px;
+  position: relative;
 
-  @media (${BREAKPOINTS.mobile}) {
-    margin-top: 20px;
-  }
+  padding-top: 2rem;
 `;
 
 const Error = styled.p`
-  display: ${(props) => props.show ? 'block' : 'none'};
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: block;
+  height: 1.5rem;
   margin-top: 0;
   margin-bottom: 0;
 
+  font-size: 1rem;
+  line-height: 1.5;
+
   color: red;
+  overflow: auto;
+  visibility: ${(props) => props.show ? 'visible' : 'hidden'};
+  opacity: ${(props) => props.show ? '1' : '0'};
+
+  transition: opacity 0.3s ease;
 `;
 
 function SignInBox(props) {
@@ -123,7 +138,7 @@ function SignInBox(props) {
           />
         </FormItem>
 
-        <FormItem>
+        <FormItem last>
           <PasswordInput
             onChange={handlePasswordChange}
             value={password}
@@ -131,13 +146,11 @@ function SignInBox(props) {
           />
         </FormItem>
 
-        <FormItem>
+        <FormFooter>
           <Error show={signInQuery.status === 'error'}>
             {signInQuery.error}
           </Error>
-        </FormItem>
 
-        <FormFooter>
           <Container
             flexFlow="row wrap"
             alignItems="center"
