@@ -88,16 +88,14 @@ function SignInBox(props) {
   });
 
   useEffect(() => {
-    async function executeSignInQuery() {
-      await signInQuery.execute();
-    }
-
     if (doExecuteSignInQuery) {
-      executeSignInQuery();
-
-      setDoExecuteSignInQuery(false);
+      signInQuery.execute();
     }
-  }, [doExecuteSignInQuery, signInQuery]);
+
+    return () => {
+      setDoExecuteSignInQuery(false);
+    };
+  });
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
