@@ -5,13 +5,14 @@ import { BREAKPOINTS } from "../utils/cssVariables";
 const StyledButton = styled.button`
   display: inline-block;
   vertical-align: top;
-  padding: 0 1.3em;
-  min-width: 105px;
   height: 2.6em;
+  line-height: calc(2.6em - 2 * 2px);
+
+  padding: 0 1.3em;
+  min-width: 7.2em;
 
   font-family: inherit;
   font-size: 18px;
-  line-height: normal;
   color: #fff;
   background-color: #24292e;
 
@@ -42,10 +43,13 @@ const StyledButton = styled.button`
 
   ${(props) => props.disabled && css`
     background-color: #4e565f;
+    cursor: not-allowed;
   `}
 
   ${(props) => props.primitive && css`
     height: 2.1em;
+    line-height: calc(2.1em - 2 * 1px);
+
     padding: 0 1em;
 
     font-size: 14px;
