@@ -15,7 +15,7 @@ const typeToColor = (type) => {
 };
 
 const StyledMessage = styled.p`
-  font-size: 30px;
+  font-size: 1.875rem;
 
   color: ${(props) => typeToColor(props.type)};
 `;

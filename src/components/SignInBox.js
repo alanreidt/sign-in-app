@@ -51,7 +51,7 @@ const Error = styled.p`
   left: 0;
 
   display: block;
-  height: 1.5rem;
+  height: 1.5em;
   margin-top: 0;
   margin-bottom: 0;
 
