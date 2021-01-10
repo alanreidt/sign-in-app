@@ -94,9 +94,11 @@ function SignInBox(props) {
 
     if (doExecuteSignInQuery) {
       executeSignInQuery();
-
-      setDoExecuteSignInQuery(false);
     }
+
+    return () => {
+      setDoExecuteSignInQuery(false);
+    };
   }, [doExecuteSignInQuery, signInQuery]);
 
   const handleFormSubmit = (event) => {
