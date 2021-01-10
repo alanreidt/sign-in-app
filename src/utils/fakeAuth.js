@@ -7,7 +7,7 @@ const fakeAuth = {
 
     return await checkCredentialsRightness(email, password);
   },
-  async signout() {
+  async signOut() {
     this.isAuthenticated = false;
 
     return true;

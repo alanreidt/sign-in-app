@@ -19,8 +19,8 @@ function useProvideAuth() {
     return user;
   };
 
-  const signout = async () => {
-    await fakeAuth.signout();
+  const signOut = async () => {
+    await fakeAuth.signOut();
 
     setUser(null);
   };
@@ -28,7 +28,7 @@ function useProvideAuth() {
   return {
     user,
     signInWithEmailAndPassword,
-    signout
+    signOut
   };
 }
 

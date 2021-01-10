@@ -7,7 +7,7 @@ function AuthButton() {
   const auth = useAuth();
 
   const handleSignOutLinkClick = () => {
-    auth.signout();
+    auth.signOut();
   }
 
   return auth.user
