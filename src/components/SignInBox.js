@@ -80,14 +80,6 @@ function SignInBox(props) {
   );
 
   useEffect(() => {
-    if (signInQuery.status === 'success') {
-      const { from } = location.state || { from: { pathname: '/success' } };
-
-      history.replace(from);
-    }
-  });
-
-  useEffect(() => {
     if (doExecuteSignInQuery) {
       signInQuery.execute();
     }
@@ -95,6 +87,14 @@ function SignInBox(props) {
     return () => {
       setDoExecuteSignInQuery(false);
     };
+  });
+
+  useEffect(() => {
+    if (signInQuery.status === 'success') {
+      const { from } = location.state || { from: { pathname: '/success' } };
+
+      history.replace(from);
+    }
   });
 
   const handleFormSubmit = (event) => {
